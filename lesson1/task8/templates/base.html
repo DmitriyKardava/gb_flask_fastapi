@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задание 8 {% if title %} - {{ title }} {% endif %}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <header class="container">
+      <nav>
+        <ul class="nav navbar-nav">
+          <li>
+            <a {% block menu_index %}{% endblock %} href="{{ url_for('index') }}">
+              Главная
+            </a>
+          </li>
+          <li>
+            <a {% block menu_contacts %}{% endblock %} href="{{ url_for('contacts') }}">
+              Контакты
+            </a>
+          </li>
+          <li>
+            <a {% block menu_about %}{% endblock %} href="{{ url_for('about') }}">
+              О нас
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">{% block content%} {% endblock %}</main>
+    <footer class="container">&copy;&nbsp;2023 all rights reserved</footer>
+  </body>
+</html>
