@@ -1,0 +1,14 @@
+{% extends "base.html" %} 
+{% block content %}
+<h1>Товары</h1>
+<h2>{{ category.name }}</h2>
+<section class="categories">
+    {% for product in products %}
+    <div>
+    <a href="{{ url_for('product', product_id=product.id) }}">
+            {{ product.name }} </a>
+    </div>
+    {% endfor %}
+    </section>
+{% endblock %}
+    
