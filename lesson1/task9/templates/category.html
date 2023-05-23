@@ -5,7 +5,7 @@
 <section class="categories">
     {% for product in products %}
     <div>
-    <a href="{{ url_for('product', id=product.id) }}">
+    <a href="{{ url_for('product', product_id=product.id) }}">
             {{ product.name }} </a>
     </div>
     {% endfor %}
