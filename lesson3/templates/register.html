@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Регистрация:</h1>
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+<form method="POST" action="{{ url_for('login') }}">
+{{ form.csrf_token }}
+{% for field in form if field.name != 'csrf_token' %}
+    <div class="text_input">
+        {{ field.label }}
+        {{ field }}
+        {% if field.errors %}
+            <ul class=errors>
+            {% for error in field.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    {% endfor %}
+    <div class="buttons">
+            <input type="submit" value="Регистрация">
+    </div>
+</form>
+{% endblock %}
